@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
 <!-- ===== SEO ===== -->
 <title>Hammou Abdelkader | Electrical, Instrumentation & Automation Engineer — Oran, Algeria</title>
 <meta name="description" content="Hammou Abdelkader — Electrical, Instrumentation & Automation Engineer at KAPACHIM S.A., Oran, Algeria. PLC, SCADA, Siemens TIA Portal, industrial commissioning, maintenance, Python & AI-assisted engineering.">
@@ -11,8 +14,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hammou Abdelkader | Electrical, Instrumentation & Automation Engineer">
 <meta property="og:description" content="Industrial electrical systems, PLC/SCADA automation, instrumentation, commissioning and AI-assisted engineering.">
-<meta property="og:image" content="photo.jpg">
-<meta name="twitter:card" content="summary">
+<!-- TODO(owner): place a 1200x630 JPG at D:\profilio\photo.jpg. The in-page avatar already degrades gracefully without it; the share card cannot. -->
+<meta property="og:image" content="https://hammou.net/photo.jpg">
+<meta property="og:image:alt" content="Hammou Abdelkader — Electrical, Instrumentation & Automation Engineer at KAPACHIM S.A., Oran, Algeria">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://hammou.net/">
+<meta property="og:url" content="https://hammou.net/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hammou Abdelkader","jobTitle":"Electrical, Instrumentation & Automation Engineer","url":"https://hammou.net/","email":"aek@hammou.net","telephone":"+213658454991","worksFor":{"@type":"Organization","name":"KAPACHIM S.A."},"sameAs":["https://www.linkedin.com/in/abdelkader-hammou"],"address":{"@type":"PostalAddress","addressLocality":"Oran","addressCountry":"Algeria"}}</script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
   body { background:var(--bg); color:var(--text); font-family:var(--font); overflow-x:hidden; transition:background .6s, color .6s; }
@@ -20,43 +28,48 @@
   html[dir="rtl"] .timeline::before { left:auto; right:8px; }
   html[dir="rtl"] .titem::before { left:auto; right:-28px; }
   html[dir="rtl"] nav a { margin-left:0; margin-right:20px; }
+  html[dir="rtl"] .logo { letter-spacing:normal; }
+  /* ponytail: one global keyboard-focus ring; measured >=3:1 against --bg in all 5 themes,
+     so no two-tone fallback is needed (tech3d is tightest at 3.53:1). */
+  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  /* ponytail: skip link - off-screen at rest, pinned below the fixed nav on keyboard focus. */
+  .skip { position:fixed; left:-9999px; top:72px; z-index:9999; padding:.6rem 1rem; background:var(--bg);
+    color:var(--accent); border:1px solid var(--accent); border-radius:8px; text-decoration:none; font-weight:700; }
+  .skip:focus { left:1rem; }
 
   /* ============ THEMES ============ */
-  body[data-theme="minimal"]{ --bg:#fafafa; --text:#1d1d1f; --muted:#6e6e73; --accent:#0071e3; --accent2:#0071e3;
+  body[data-theme="minimal"]{ --bg:#fafafa; --text:#1d1d1f; --muted:#6e6e73; --accent:#0071e3; --accent2:#1a7f37;
     --card:#ffffff; --border:rgba(0,0,0,.08); --navbg:rgba(250,250,250,.8);
     --font:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; --radius:18px; }
   body[data-theme="luxury"]{ --bg:#0c0a08; --text:#f0e9dd; --muted:#a89f8e; --accent:#d4af37; --accent2:#f5d76e;
     --card:#161310; --border:rgba(212,175,55,.25); --navbg:rgba(12,10,8,.85);
     --font:Georgia,'Times New Roman',serif; --radius:4px; }
-  body[data-theme="tech3d"]{ --bg:#05070f; --text:#e5e7eb; --muted:#8b93a7; --accent:#7c3aed; --accent2:#22d3ee;
+  body[data-theme="tech3d"]{ --bg:#05070f; --text:#e5e7eb; --muted:#8b93a7; --accent:#0a84ff; --accent2:#22d3ee;
     --card:rgba(17,20,35,.85); --border:rgba(124,58,237,.35); --navbg:rgba(5,7,15,.7);
     --font:'Segoe UI',Arial,sans-serif; --radius:16px; }
   body[data-theme="hmi"]{ --bg:#000a00; --text:#33ff66; --muted:#1f9944; --accent:#33ff66; --accent2:#ffcc00;
     --card:#031503; --border:rgba(51,255,102,.35); --navbg:rgba(0,10,0,.85);
     --font:'Courier New',Consolas,monospace; --radius:0px; }
-  body[data-theme="gradient"]{ --bg:#0f0c29; --text:#ffffff; --muted:#c9c4e8; --accent:#ff6ec4; --accent2:#7873f5;
-    --card:rgba(255,255,255,.08); --border:rgba(255,255,255,.2); --navbg:rgba(15,12,41,.5);
-    --font:'Segoe UI',Arial,sans-serif; --radius:24px; }
+  /* ponytail: native controls + scrollbars follow the active theme.
+     The theme attribute lives on <body>, so this must be body[data-theme] - a
+     :root/html selector can never match per theme. */
+  body[data-theme="minimal"]{color-scheme:light}
+  body[data-theme="luxury"]{color-scheme:dark}
+  body[data-theme="tech3d"]{color-scheme:dark}
+  body[data-theme="hmi"]{color-scheme:dark}
 
   #fx { position:fixed; inset:0; z-index:-2; }
   #three { position:fixed; inset:0; z-index:-2; display:none; }
   body[data-theme="tech3d"] #three { display:block; }
   body[data-theme="tech3d"] #fx { display:none; }
 
-  .blob { position:fixed; border-radius:50%; filter:blur(90px); opacity:0; z-index:-1; transition:opacity 1s; pointer-events:none; }
-  body[data-theme="gradient"] .blob { opacity:.55; }
-  .b1 { width:480px;height:480px;background:#ff6ec4;top:-10%;left:-10%;animation:float1 16s ease-in-out infinite; }
-  .b2 { width:420px;height:420px;background:#7873f5;bottom:-10%;right:-5%;animation:float2 20s ease-in-out infinite; }
-  .b3 { width:340px;height:340px;background:#22d3ee;top:40%;left:45%;animation:float1 24s ease-in-out infinite reverse; }
-  @keyframes float1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(90px,60px) scale(1.15);} }
-  @keyframes float2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-80px,-70px) scale(.9);} }
   body[data-theme="hmi"]::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:99;
     background:repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
 
   /* ============ NAV ============ */
   nav { position:fixed; top:0; width:100%; padding:12px 5%; display:flex; justify-content:space-between; align-items:center;
     flex-wrap:wrap; gap:8px; background:var(--navbg); backdrop-filter:blur(12px); z-index:100; border-bottom:1px solid var(--border); }
-  .logo { font-weight:700; font-size:1.1rem; color:var(--accent); letter-spacing:1px; cursor:pointer; user-select:none; transition:.3s; }
+  .logo { font:inherit; font-weight:700; font-size:1.1rem; color:var(--accent); letter-spacing:1px; background:none; border:0; padding:0; text-align:inherit; cursor:pointer; user-select:none; transition:.3s; }
   .logo:hover { transform:scale(1.05); text-shadow:0 0 14px var(--accent); }
   .logo small { display:block; font-size:.6rem; color:var(--muted); font-weight:400; letter-spacing:2px; }
   nav a { color:var(--text); text-decoration:none; margin-left:20px; font-size:.9rem; position:relative; }
@@ -71,7 +84,7 @@
     z-index:200; opacity:0; transition:.4s; pointer-events:none; font-weight:700; }
   #toast.on { opacity:1; transform:translateX(-50%) translateY(0); }
 
-  section { padding:110px 7% 50px; }
+  section { padding:110px 7% 50px; scroll-margin-top:110px; }
   h2.title { font-size:2rem; margin-bottom:36px; }
   h2.title::after { content:''; display:block; width:70px; height:3px; background:var(--accent); margin-top:10px; }
 
@@ -131,7 +144,8 @@
   .card h3 { margin-bottom:10px; color:var(--accent); font-size:1.1rem; }
   .card p { color:var(--muted); font-size:.93rem; line-height:1.6; }
 
-  .reveal { opacity:0; transform:translateY(50px); transition:all .8s ease; }
+  .reveal { opacity:1; transition:all .8s ease; }
+  .js .reveal { opacity:0; transform:translateY(50px); }
   .reveal.show { opacity:1; transform:none; }
 
   .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; max-width:900px; margin-bottom:44px; }
@@ -142,21 +156,32 @@
   .contact-card b { color:var(--accent); display:block; margin-bottom:6px; }
   form input, form textarea { width:100%; max-width:600px; display:block; margin-bottom:14px; padding:14px;
     background:var(--card); border:1px solid var(--border); border-radius:var(--radius); color:var(--text); font-family:inherit; }
-  form input:focus, form textarea:focus { outline:none; border-color:var(--accent); }
+  form input:focus, form textarea:focus { border-color:var(--accent); }
+  form label { display:block; max-width:600px; margin:0 0 6px; font-size:.9rem; font-weight:600; color:var(--text); }
 
   footer { text-align:center; padding:28px; color:var(--muted); border-top:1px solid var(--border); font-size:.9rem; }
   @media(max-width:768px){ .hero h1{font-size:1.9rem;} .avatar{margin:0 auto;} nav a{margin-left:10px;} }
+  /* ponytail: one global kill-switch for motion; keyframes stay for everyone else. */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important;
+      animation-delay:0s !important; transition-duration:0.001ms !important; transition-delay:0s !important;
+      scroll-behavior:auto !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .logo:hover, .btn:hover, .chip:hover, .contact-card:hover { transform:none !important; }
+    .card { transform:none !important; }
+  }
 </style>
 </head>
 <body data-theme="minimal">
+<a class="skip" href="#main" data-i18n="a11y.skipToContent">Skip to content</a>
 
 <canvas id="fx"></canvas>
 <canvas id="three"></canvas>
-<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-<div id="toast"></div>
+<div id="toast" aria-live="polite"></div>
 
 <nav>
-  <div class="logo" id="themeBtn" title="Click to change design">HAMMOU ABDELKADER<small id="themeName">⟳ MINIMAL</small></div>
+  <button type="button" class="logo" id="themeBtn" title="Switch theme" aria-describedby="themeHint">HAMMOU ABDELKADER<small id="themeName">⟳ MINIMAL</small></button>
+  <span id="themeHint" hidden data-i18n="a11y.switchTheme">Switches the colour theme</span>
   <div>
     <a href="#home" data-i18n="nav_home">Home</a><a href="#about" data-i18n="nav_about">About</a>
     <a href="#experience" data-i18n="nav_exp">Experience</a><a href="#skills" data-i18n="nav_skills">Skills</a>
@@ -164,6 +189,8 @@
     <button id="langBtn">FR</button>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <section class="hero" id="home">
   <div>
@@ -173,7 +200,8 @@
     <p class="loc">📍 <span data-i18n="loc">Oran, Algeria</span> | KAPACHIM S.A.</p>
     <div>
       <a class="btn" href="#projects" data-i18n="btn_work">View My Work</a>
-      <a class="btn ghost" href="cv.pdf" download data-i18n="btn_cv">⬇ Download CV</a>
+      <!-- TODO(owner): export your real CV to D:\profilio\cv.pdf (A4 PDF, < 2 MB). This button starts working the moment that file exists — no code change needed. -->
+      <a class="btn ghost" href="cv.pdf" download type="application/pdf" data-i18n="btn_cv">⬇ Download CV</a>
       <a class="btn ghost" href="#contact" data-i18n="btn_contact">Contact Me</a>
     </div>
     <p class="hint">💡 <span data-i18n="hint">Click</span> <b>HAMMOU ABDELKADER</b> <span data-i18n="hint2">to switch between 5 designs</span></p>
@@ -187,25 +215,25 @@
   <p class="reveal" data-i18n="about2">Currently, I work as Responsable Électricité Instrumentation et Automatisme at KAPACHIM S.A., where I manage electrical infrastructure, automation systems, industrial maintenance, commissioning, and engineering projects.</p>
   <p class="reveal" data-i18n="about3">My objective is to design reliable industrial systems, improve operational efficiency, and integrate modern technologies such as automation, AI, and software development into industrial environments.</p>
   <div class="chips reveal">
-    <span class="chip">🎓 Master's — Electrical & Electronics Eng., USTO-MB (2017–2019)</span>
-    <span class="chip">🎓 Bachelor's — Electrical & Electronics Eng., USTO-MB (2014–2017)</span>
-    <span class="chip">🗣️ العربية • Français • English</span>
+    <span class="chip" data-i18n="edu1">🎓 Master's — Electrical & Electronics Eng., USTO-MB (2017–2019)</span>
+    <span class="chip" data-i18n="edu2">🎓 Bachelor's — Electrical & Electronics Eng., USTO-MB (2014–2017)</span>
+    <span class="chip" data-i18n="edu3">🗣️ العربية • Français • English</span>
   </div>
 </section>
 
 <section id="experience">
   <h2 class="title reveal" data-i18n="t_exp">Professional Experience</h2>
   <div class="timeline">
-    <div class="titem reveal"><h3>Responsable Électricité Instrumentation et Automatisme — KAPACHIM S.A.</h3><div class="when">01/2025 – Present</div>
-      <p>Electrical engineering management, industrial maintenance supervision, electrical & instrumentation commissioning, PLC-based control systems, preventive maintenance planning, team supervision, procurement, technical reporting, troubleshooting, electrical safety compliance.</p></div>
-    <div class="titem reveal"><h3>Electrical Technician — KAPACHIM S.A.</h3><div class="when">10/2021 – 03/2025</div>
-      <p>Industrial electrical installation, cable routing, power distribution, motor installation, MCC maintenance, troubleshooting, instrument installation, preventive maintenance.</p></div>
-    <div class="titem reveal"><h3>Freelance — Electrical Engineering & Consulting</h3><div class="when">02/2021 – 09/2021</div>
-      <p>Electrical engineering and technical consulting projects.</p></div>
-    <div class="titem reveal"><h3>Marketing Manager — Travel Agency</h3><div class="when">12/2019 – 01/2021</div>
-      <p>Managed digital marketing and customer operations.</p></div>
-    <div class="titem reveal"><h3>Student Internship — Sonatrach (GP2Z, Arzew)</h3><div class="when">03/2019</div>
-      <p>Completed an internship at the GP2Z complex, Arzew.</p></div>
+    <div class="titem reveal"><h3 data-i18n="exp1.title">Responsable Électricité Instrumentation et Automatisme — KAPACHIM S.A.</h3><div class="when" data-i18n="exp1.when">01/2025 – Present</div>
+      <p data-i18n="exp1.desc">Electrical engineering management, industrial maintenance supervision, electrical & instrumentation commissioning, PLC-based control systems, preventive maintenance planning, team supervision, procurement, technical reporting, troubleshooting, electrical safety compliance.</p></div>
+    <div class="titem reveal"><h3 data-i18n="exp2.title">Electrical Technician — KAPACHIM S.A.</h3><div class="when" data-i18n="exp2.when">10/2021 – 03/2025</div>
+      <p data-i18n="exp2.desc">Industrial electrical installation, cable routing, power distribution, motor installation, MCC maintenance, troubleshooting, instrument installation, preventive maintenance.</p></div>
+    <div class="titem reveal"><h3 data-i18n="exp3.title">Freelance — Electrical Engineering & Consulting</h3><div class="when" data-i18n="exp3.when">02/2021 – 09/2021</div>
+      <p data-i18n="exp3.desc">Electrical engineering and technical consulting projects.</p></div>
+    <div class="titem reveal"><h3 data-i18n="exp4.title">Marketing Manager — Travel Agency</h3><div class="when" data-i18n="exp4.when">12/2019 – 01/2021</div>
+      <p data-i18n="exp4.desc">Managed digital marketing and customer operations.</p></div>
+    <div class="titem reveal"><h3 data-i18n="exp5.title">Student Internship — Sonatrach (GP2Z, Arzew)</h3><div class="when" data-i18n="exp5.when">03/2019</div>
+      <p data-i18n="exp5.desc">Completed an internship at the GP2Z complex, Arzew.</p></div>
   </div>
 </section>
 
@@ -213,20 +241,20 @@
   <h2 class="title reveal" data-i18n="t_skills">Technical Expertise</h2>
   <div class="skills-wrap">
     <div class="reveal">
-      <div class="skill"><div class="row"><b>⚡ Electrical Engineering</b><span>95%</span></div><div class="bar"><div data-w="95%"></div></div></div>
-      <div class="skill"><div class="row"><b>🤖 Automation (PLC / SCADA / HMI)</b><span>90%</span></div><div class="bar"><div data-w="90%"></div></div></div>
-      <div class="skill"><div class="row"><b>🎛️ Instrumentation & Calibration</b><span>88%</span></div><div class="bar"><div data-w="88%"></div></div></div>
-      <div class="skill"><div class="row"><b>🔧 Industrial Maintenance & RCA</b><span>92%</span></div><div class="bar"><div data-w="92%"></div></div></div>
-      <div class="skill"><div class="row"><b>🐍 Python & Industrial Software</b><span>80%</span></div><div class="bar"><div data-w="80%"></div></div></div>
-      <div class="skill"><div class="row"><b>📋 Project Management</b><span>85%</span></div><div class="bar"><div data-w="85%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill1">⚡ Electrical Engineering</b><span>95%</span></div><div class="bar"><div data-w="95%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill2">🤖 Automation (PLC / SCADA / HMI)</b><span>90%</span></div><div class="bar"><div data-w="90%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill3">🎛️ Instrumentation & Calibration</b><span>88%</span></div><div class="bar"><div data-w="88%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill4">🔧 Industrial Maintenance & RCA</b><span>92%</span></div><div class="bar"><div data-w="92%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill5">🐍 Python & Industrial Software</b><span>80%</span></div><div class="bar"><div data-w="80%"></div></div></div>
+      <div class="skill"><div class="row"><b data-i18n="skill6">📋 Project Management</b><span>85%</span></div><div class="bar"><div data-w="85%"></div></div></div>
     </div>
     <div class="reveal">
-      <p class="subhead">Software & Tools</p>
-      <div class="chips"><span class="chip">ETAP</span><span class="chip">Caneco BT</span><span class="chip">AutoCAD</span><span class="chip">AutoCAD Plant 3D</span><span class="chip">EPLAN P8</span><span class="chip">Dialux Evo</span><span class="chip">Siemens TIA Portal</span><span class="chip">WinCC Unified</span><span class="chip">WinCC Flexible</span><span class="chip">Python</span><span class="chip">Docker</span><span class="chip">PostgreSQL</span><span class="chip">MinIO</span></div>
-      <p class="subhead">Standards</p>
-      <div class="chips"><span class="chip">IEC 60364</span><span class="chip">IEC 60204</span><span class="chip">IEC 60947</span><span class="chip">IEC 61508</span><span class="chip">NF C 15-100</span><span class="chip">IEEE 519</span></div>
-      <p class="subhead">Certifications</p>
-      <div class="chips"><span class="chip">PCS7 Graphics — WinCC</span><span class="chip">PLC Programming L3</span><span class="chip">PLC Programming L4</span><span class="chip">PLC & DCS</span></div>
+      <p class="subhead" data-i18n="chip.sub.st">Software & Tools</p>
+      <div class="chips"><span class="chip" data-i18n="chip.st.1">ETAP</span><span class="chip" data-i18n="chip.st.2">Caneco BT</span><span class="chip" data-i18n="chip.st.3">AutoCAD</span><span class="chip" data-i18n="chip.st.4">AutoCAD Plant 3D</span><span class="chip" data-i18n="chip.st.5">EPLAN P8</span><span class="chip" data-i18n="chip.st.6">Dialux Evo</span><span class="chip" data-i18n="chip.st.7">Siemens TIA Portal</span><span class="chip" data-i18n="chip.st.8">WinCC Unified</span><span class="chip" data-i18n="chip.st.9">WinCC Flexible</span><span class="chip" data-i18n="chip.st.10">Python</span><span class="chip" data-i18n="chip.st.11">Docker</span><span class="chip" data-i18n="chip.st.12">PostgreSQL</span><span class="chip" data-i18n="chip.st.13">MinIO</span></div>
+      <p class="subhead" data-i18n="chip.sub.std">Standards</p>
+      <div class="chips"><span class="chip" data-i18n="chip.std.1">IEC 60364</span><span class="chip" data-i18n="chip.std.2">IEC 60204</span><span class="chip" data-i18n="chip.std.3">IEC 60947</span><span class="chip" data-i18n="chip.std.4">IEC 61508</span><span class="chip" data-i18n="chip.std.5">NF C 15-100</span><span class="chip" data-i18n="chip.std.6">IEEE 519</span></div>
+      <p class="subhead" data-i18n="chip.sub.cert">Certifications</p>
+      <div class="chips"><span class="chip" data-i18n="chip.cert.1">PCS7 Graphics — WinCC</span><span class="chip" data-i18n="chip.cert.2">PLC Programming L3</span><span class="chip" data-i18n="chip.cert.3">PLC Programming L4</span><span class="chip" data-i18n="chip.cert.4">PLC & DCS</span></div>
     </div>
   </div>
 </section>
@@ -234,38 +262,52 @@
 <section id="projects">
   <h2 class="title reveal" data-i18n="t_proj">Projects</h2>
   <div class="grid">
-    <div class="card reveal"><div class="icon">🏭</div><h3>SLES Production Project</h3><p>Electrical supervision, installation management, cable routing, testing, commissioning and documentation.</p></div>
-    <div class="card reveal"><div class="icon">⚡</div><h3>Automation Power Upgrade</h3><p>Power system upgrade for automation infrastructure with technical coordination and commissioning.</p></div>
-    <div class="card reveal"><div class="icon">🔌</div><h3>TGBT LABSA</h3><p>Main low-voltage switchboard project: engineering reviews, installation and testing.</p></div>
-    <div class="card reveal"><div class="icon">🔋</div><h3>Generator & UPS Integration</h3><p>Integration of backup generators and UPS systems into industrial electrical infrastructure.</p></div>
-    <div class="card reveal"><div class="icon">🎛️</div><h3>Instrument Commissioning</h3><p>Commissioning of flowmeters, level transmitters and pressure instruments with calibration.</p></div>
-    <div class="card reveal"><div class="icon">🖐️</div><h3>Multi-Biometric Attendance System</h3><p>Python platform syncing multiple biometric devices: auto sync, local database, Flask web interface.</p></div>
-    <div class="card reveal"><div class="icon">🧠</div><h3>AI Engineering Assistant</h3><p>AI-powered assistants for technical documentation, maintenance planning, calculations and troubleshooting.</p></div>
-    <div class="card reveal"><div class="icon">⚙️</div><h3>Industrial Automation Workflows</h3><p>Automation workflows improving industrial maintenance and engineering documentation.</p></div>
+    <div class="card reveal"><div class="icon">🏭</div><h3 data-i18n="proj1.title">SLES Production Project</h3><p data-i18n="proj1.desc">Electrical supervision, installation management, cable routing, testing, commissioning and documentation.</p></div>
+    <div class="card reveal"><div class="icon">⚡</div><h3 data-i18n="proj2.title">Automation Power Upgrade</h3><p data-i18n="proj2.desc">Power system upgrade for automation infrastructure with technical coordination and commissioning.</p></div>
+    <div class="card reveal"><div class="icon">🔌</div><h3 data-i18n="proj3.title">TGBT LABSA</h3><p data-i18n="proj3.desc">Main low-voltage switchboard project: engineering reviews, installation and testing.</p></div>
+    <div class="card reveal"><div class="icon">🔋</div><h3 data-i18n="proj4.title">Generator & UPS Integration</h3><p data-i18n="proj4.desc">Integration of backup generators and UPS systems into industrial electrical infrastructure.</p></div>
+    <div class="card reveal"><div class="icon">🎛️</div><h3 data-i18n="proj5.title">Instrument Commissioning</h3><p data-i18n="proj5.desc">Commissioning of flowmeters, level transmitters and pressure instruments with calibration.</p></div>
+    <div class="card reveal"><div class="icon">🖐️</div><h3 data-i18n="proj6.title">Multi-Biometric Attendance System</h3><p data-i18n="proj6.desc">Python platform syncing multiple biometric devices: auto sync, local database, Flask web interface.</p></div>
+    <div class="card reveal"><div class="icon">🧠</div><h3 data-i18n="proj7.title">AI Engineering Assistant</h3><p data-i18n="proj7.desc">AI-powered assistants for technical documentation, maintenance planning, calculations and troubleshooting.</p></div>
+    <div class="card reveal"><div class="icon">⚙️</div><h3 data-i18n="proj8.title">Industrial Automation Workflows</h3><p data-i18n="proj8.desc">Automation workflows improving industrial maintenance and engineering documentation.</p></div>
   </div>
 </section>
 
 <section id="contact">
   <h2 class="title reveal" data-i18n="t_contact">Contact</h2>
   <div class="contact-grid">
-    <a class="contact-card reveal" href="mailto:aek@hammou.net"><div class="icon">📧</div><b>Email</b>aek@hammou.net</a>
+    <a class="contact-card reveal" href="mailto:aek@hammou.net"><div class="icon">📧</div><b data-i18n="c_email">Email</b>aek@hammou.net</a>
     <a class="contact-card reveal" href="tel:+213658454991"><div class="icon">📱</div><b data-i18n="c_mobile">Mobile</b>0658 45 49 91</a>
-    <a class="contact-card reveal" href="https://www.linkedin.com/in/abdelkader-hammou" target="_blank"><div class="icon">💼</div><b>LinkedIn</b>abdelkader-hammou</a>
+    <a class="contact-card reveal" href="https://www.linkedin.com/in/abdelkader-hammou" target="_blank" rel="noopener noreferrer"><div class="icon">💼</div><b data-i18n="c_linkedin">LinkedIn</b>abdelkader-hammou</a>
     <div class="contact-card reveal"><div class="icon">📍</div><b data-i18n="c_loc">Location</b><span data-i18n="loc">Oran, Algeria</span></div>
   </div>
-  <!-- Working form: create a free form at formspree.io and replace YOUR_FORM_ID -->
-  <form class="reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="text" name="name" data-ph="ph_name" placeholder="Your Name" required>
-    <input type="email" name="email" data-ph="ph_email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" data-ph="ph_msg" placeholder="Your Message" required></textarea>
+  <!-- Form: replace REPLACE_WITH_FORM_ID with a real form id from formspree.io to post online.
+       Until then the form falls back to opening the visitor's mail app with the message pre-filled. -->
+  <form class="reveal" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+    <label for="f-name" data-i18n="lbl_name">Your Name</label>
+    <input id="f-name" type="text" name="name" data-ph="ph_name" placeholder="Your Name" required>
+    <label for="f-email" data-i18n="lbl_email">Your Email</label>
+    <input id="f-email" type="email" name="email" data-ph="ph_email" placeholder="Your Email" required>
+    <label for="f-message" data-i18n="lbl_message">Your Message</label>
+    <textarea id="f-message" name="message" rows="5" data-ph="ph_msg" placeholder="Your Message" required></textarea>
     <button class="btn" type="submit" data-i18n="btn_send">Send Message ⚡</button>
   </form>
 </section>
 
+</main>
+
 <footer><span data-i18n="footer">© 2026 Hammou Abdelkader — Electrical • Instrumentation • Automation</span> ⚡</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<!-- three@0.160.0 is PINNED on purpose: it is the LAST UMD build (later majors are ESM-only) and it still resolves on jsDelivr.
+     ponytail: this file emits a deprecation warning at load -- harmless. It is kept ONLY because initThree()
+     guards on `typeof THREE === 'undefined'`; that guard is now LOUD (console.warn + retry). If anyone bumps
+     three or the CDN 404s, they MUST keep it loud -- a silent no-op would hide a dead 3D theme indefinitely. -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" crossorigin defer></script>
 <script>
+/* ============ REDUCED MOTION ============ */
+// one live MediaQueryList, read at draw time; the change listener below restarts both loops
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 /* ============ LANGUAGES ============ */
 const I18N = {
 en:{ nav_home:'Home',nav_about:'About',nav_exp:'Experience',nav_skills:'Skills',nav_proj:'Projects',nav_contact:'Contact',
@@ -276,9 +318,11 @@ en:{ nav_home:'Home',nav_about:'About',nav_exp:'Experience',nav_skills:'Skills',
   about1:'I am an Electrical, Instrumentation, and Automation Engineer with professional experience in industrial electrical systems, automation, instrumentation, maintenance, and project management.',
   about2:'Currently, I work as Responsable Électricité Instrumentation et Automatisme at KAPACHIM S.A., where I manage electrical infrastructure, automation systems, industrial maintenance, commissioning, and engineering projects.',
   about3:'My objective is to design reliable industrial systems, improve operational efficiency, and integrate modern technologies such as automation, AI, and software development into industrial environments.',
-  c_mobile:'Mobile', c_loc:'Location', ph_name:'Your Name', ph_email:'Your Email', ph_msg:'Your Message',
+  c_mobile:'Mobile', c_loc:'Location', ph_name:'Your Name', ph_email:'Your Email', ph_msg:'Your Message', lbl_name:'Your Name', lbl_email:'Your Email', lbl_message:'Your Message', 'a11y.skipToContent':'Skip to content',
   btn_send:'Send Message ⚡', footer:'© 2026 Hammou Abdelkader — Electrical • Instrumentation • Automation',
-  typing:['Electrical Engineering Manager','PLC & SCADA Specialist (Siemens TIA Portal)','Instrumentation & Commissioning Engineer','Industrial Maintenance Leader','Python & AI-Assisted Engineering'] },
+  typing:['Electrical Engineering Manager','PLC & SCADA Specialist (Siemens TIA Portal)','Instrumentation & Commissioning Engineer','Industrial Maintenance Leader','Python & AI-Assisted Engineering'],
+  "exp1.title":"Responsable Électricité Instrumentation et Automatisme — KAPACHIM S.A.","exp1.desc":"Electrical engineering management, industrial maintenance supervision, electrical & instrumentation commissioning, PLC-based control systems, preventive maintenance planning, team supervision, procurement, technical reporting, troubleshooting, electrical safety compliance.","exp2.title":"Electrical Technician — KAPACHIM S.A.","exp2.desc":"Industrial electrical installation, cable routing, power distribution, motor installation, MCC maintenance, troubleshooting, instrument installation, preventive maintenance.","exp3.title":"Freelance — Electrical Engineering & Consulting","exp3.desc":"Electrical engineering and technical consulting projects.","exp4.title":"Marketing Manager — Travel Agency","exp4.desc":"Managed digital marketing and customer operations.","exp5.title":"Student Internship — Sonatrach (GP2Z, Arzew)","exp5.desc":"Completed an internship at the GP2Z complex, Arzew.","skill1":"⚡ Electrical Engineering","skill2":"🤖 Automation (PLC / SCADA / HMI)","skill3":"🎛️ Instrumentation & Calibration","skill4":"🔧 Industrial Maintenance & RCA","skill5":"🐍 Python & Industrial Software","skill6":"📋 Project Management","chip.st.1":"ETAP","chip.st.2":"Caneco BT","chip.st.3":"AutoCAD","chip.st.4":"AutoCAD Plant 3D","chip.st.5":"EPLAN P8","chip.st.6":"Dialux Evo","chip.st.7":"Siemens TIA Portal","chip.st.8":"WinCC Unified","chip.st.9":"WinCC Flexible","chip.st.10":"Python","chip.st.11":"Docker","chip.st.12":"PostgreSQL","chip.st.13":"MinIO","chip.std.1":"IEC 60364","chip.std.2":"IEC 60204","chip.std.3":"IEC 60947","chip.std.4":"IEC 61508","chip.std.5":"NF C 15-100","chip.std.6":"IEEE 519","chip.cert.1":"PCS7 Graphics — WinCC","chip.cert.2":"PLC Programming L3","chip.cert.3":"PLC Programming L4","chip.cert.4":"PLC & DCS","proj1.title":"SLES Production Project","proj1.desc":"Electrical supervision, installation management, cable routing, testing, commissioning and documentation.","proj2.title":"Automation Power Upgrade","proj2.desc":"Power system upgrade for automation infrastructure with technical coordination and commissioning.","proj3.title":"TGBT LABSA","proj3.desc":"Main low-voltage switchboard project: engineering reviews, installation and testing.","proj4.title":"Generator & UPS Integration","proj4.desc":"Integration of backup generators and UPS systems into industrial electrical infrastructure.","proj5.title":"Instrument Commissioning","proj5.desc":"Commissioning of flowmeters, level transmitters and pressure instruments with calibration.","proj6.title":"Multi-Biometric Attendance System","proj6.desc":"Python platform syncing multiple biometric devices: auto sync, local database, Flask web interface.","proj7.title":"AI Engineering Assistant","proj7.desc":"AI-powered assistants for technical documentation, maintenance planning, calculations and troubleshooting.","proj8.title":"Industrial Automation Workflows","proj8.desc":"Automation workflows improving industrial maintenance and engineering documentation.","edu1":"🎓 Master's — Electrical & Electronics Eng., USTO-MB (2017–2019)","edu2":"🎓 Bachelor's — Electrical & Electronics Eng., USTO-MB (2014–2017)","edu3":"🗣️ Arabic • French • English","c_email":"Email","c_linkedin":"LinkedIn","a11y.switchTheme":"Switches the colour theme",'exp1.when':'01/2025 – Present','exp2.when':'10/2021 – 03/2025','exp3.when':'02/2021 – 09/2021','exp4.when':'12/2019 – 01/2021','exp5.when':'03/2019','chip.sub.st':'Software & Tools','chip.sub.std':'Standards','chip.sub.cert':'Certifications'
+ },
 fr:{ nav_home:'Accueil',nav_about:'À propos',nav_exp:'Expérience',nav_skills:'Compétences',nav_proj:'Projets',nav_contact:'Contact',
   hi:'Bonjour, je suis', sub:'Ingénieur en Électricité, Instrumentation et Automatisme', loc:'Oran, Algérie',
   btn_work:'Voir mes projets', btn_cv:'⬇ Télécharger le CV', btn_contact:'Me contacter',
@@ -287,9 +331,11 @@ fr:{ nav_home:'Accueil',nav_about:'À propos',nav_exp:'Expérience',nav_skills:'
   about1:"Je suis ingénieur en électricité, instrumentation et automatisme avec une expérience professionnelle dans les systèmes électriques industriels, l'automatisation, l'instrumentation, la maintenance et la gestion de projets.",
   about2:"Actuellement, je travaille comme Responsable Électricité Instrumentation et Automatisme chez KAPACHIM S.A., où je gère l'infrastructure électrique, les systèmes d'automatisation, la maintenance industrielle, la mise en service et les projets d'ingénierie.",
   about3:"Mon objectif est de concevoir des systèmes industriels fiables, d'améliorer l'efficacité opérationnelle et d'intégrer des technologies modernes comme l'automatisation, l'IA et le développement logiciel dans les environnements industriels.",
-  c_mobile:'Mobile', c_loc:'Localisation', ph_name:'Votre nom', ph_email:'Votre email', ph_msg:'Votre message',
+  c_mobile:'Mobile', c_loc:'Localisation', ph_name:'Votre nom', ph_email:'Votre email', ph_msg:'Votre message', lbl_name:'Votre nom', lbl_email:'Votre email', lbl_message:'Votre message', 'a11y.skipToContent':'Aller au contenu',
   btn_send:'Envoyer ⚡', footer:'© 2026 Hammou Abdelkader — Électricité • Instrumentation • Automatisme',
-  typing:['Responsable Ingénierie Électrique','Spécialiste PLC & SCADA (Siemens TIA Portal)','Ingénieur Instrumentation & Mise en service','Leader Maintenance Industrielle','Python & Ingénierie assistée par IA'] },
+  typing:['Responsable Ingénierie Électrique','Spécialiste PLC & SCADA (Siemens TIA Portal)','Ingénieur Instrumentation & Mise en service','Leader Maintenance Industrielle','Python & Ingénierie assistée par IA'],
+  "exp1.title":"Responsable Électricité Instrumentation et Automatisme — KAPACHIM S.A.","exp1.desc":"Gestion de l'ingénierie électrique, supervision de la maintenance industrielle, mise en service électrique et instrumentation, systèmes de contrôle basés sur PLC, planification de la maintenance préventive, supervision d'équipe, approvisionnement, reporting technique, dépannage, conformité à la sécurité électrique.","exp2.title":"Technicien en électricité — KAPACHIM S.A.","exp2.desc":"Installation électrique industrielle, routage de câbles, distribution d'énergie, installation de moteurs, maintenance de MCC, dépannage, installation d'instruments, maintenance préventive.","exp3.title":"Indépendant — Ingénierie électrique & conseil","exp3.desc":"Projets d'ingénierie électrique et de conseil technique.","exp4.title":"Responsable marketing — Agence de voyage","exp4.desc":"Gestion du marketing numérique et des opérations clients.","exp5.title":"Stage étudiant — Sonatrach (GP2Z, Arzew)","exp5.desc":"Un stage a été effectué au complexe GP2Z, Arzew.","skill1":"⚡ Génie électrique","skill2":"🤖 Automatisation (PLC / SCADA / HMI)","skill3":"🎛️ Instrumentation & étalonnage","skill4":"🔧 Maintenance industrielle & ACAR","skill5":"🐍 Python & Logiciels industriels","skill6":"📋 Gestion de projet","chip.st.1":"ETAP","chip.st.2":"Caneco BT","chip.st.3":"AutoCAD","chip.st.4":"AutoCAD Plant 3D","chip.st.5":"EPLAN P8","chip.st.6":"Dialux Evo","chip.st.7":"Siemens TIA Portal","chip.st.8":"WinCC Unified","chip.st.9":"WinCC Flexible","chip.st.10":"Python","chip.st.11":"Docker","chip.st.12":"PostgreSQL","chip.st.13":"MinIO","chip.std.1":"IEC 60364","chip.std.2":"IEC 60204","chip.std.3":"IEC 60947","chip.std.4":"IEC 61508","chip.std.5":"NF C 15-100","chip.std.6":"IEEE 519","chip.cert.1":"PCS7 Graphics — WinCC","chip.cert.2":"PLC Programming L3","chip.cert.3":"PLC Programming L4","chip.cert.4":"PLC & DCS","proj1.title":"Projet de production SLES","proj1.desc":"Supervision électrique, gestion de l'installation, routage de câbles, essais, mise en service et documentation.","proj2.title":"Mise à niveau de la puissance d'automatisation","proj2.desc":"Mise à niveau du système d'énergie pour l'infrastructure d'automatisation avec coordination technique et mise en service.","proj3.title":"TGBT LABSA","proj3.desc":"Projet de tableau principal basse tension : revues d'ingénierie, installation et essais.","proj4.title":"Intégration des groupes électrogènes et des onduleurs","proj4.desc":"Intégration des groupes électrogènes de secours et des systèmes d'onduleurs dans l'infrastructure électrique industrielle.","proj5.title":"Mise en service des instruments","proj5.desc":"Mise en service des débitmètres, transmetteurs de niveau et instruments de pression avec calibration.","proj6.title":"Système de présence multi-biométrique","proj6.desc":"Plateforme Python synchronisant plusieurs dispositifs biométriques : synchronisation automatique, base de données locale, interface web Flask.","proj7.title":"Assistant d'ingénierie IA","proj7.desc":"Assistants alimentés par l'IA pour la documentation technique, la planification de la maintenance, les calculs et le dépannage.","proj8.title":"Fluxes de travail d'automatisation industrielle","proj8.desc":"Fluxes de travail d'automatisation améliorant la maintenance industrielle et la documentation d'ingénierie.","edu1":"🎓 Master — Génie électrique et électronique, USTO-MB (2017–2019)","edu2":"🎓 Licence — Génie électrique et électronique, USTO-MB (2014–2017)","edu3":"🗣️ arabe • français • anglais","c_email":"Email","c_linkedin":"LinkedIn","a11y.switchTheme":"Change le thème de couleur",'exp1.when':'01/2025 – Présent','exp2.when':'10/2021 – 03/2025','exp3.when':'02/2021 – 09/2021','exp4.when':'12/2019 – 01/2021','exp5.when':'03/2019','chip.sub.st':'Logiciels & Outils','chip.sub.std':'Normes','chip.sub.cert':'Certifications'
+ },
 ar:{ nav_home:'الرئيسية',nav_about:'نبذة عني',nav_exp:'الخبرة',nav_skills:'المهارات',nav_proj:'المشاريع',nav_contact:'اتصل بي',
   hi:'مرحباً، أنا', sub:'مهندس كهرباء وأجهزة قياس وأتمتة', loc:'وهران، الجزائر',
   btn_work:'شاهد أعمالي', btn_cv:'⬇ تحميل السيرة الذاتية', btn_contact:'اتصل بي',
@@ -298,9 +344,11 @@ ar:{ nav_home:'الرئيسية',nav_about:'نبذة عني',nav_exp:'الخبر
   about1:'أنا مهندس كهرباء وأجهزة قياس وأتمتة، أمتلك خبرة مهنية في الأنظمة الكهربائية الصناعية والأتمتة وأجهزة القياس والصيانة وإدارة المشاريع.',
   about2:'أعمل حالياً كمسؤول الكهرباء وأجهزة القياس والأتمتة في شركة KAPACHIM S.A.، حيث أدير البنية التحتية الكهربائية وأنظمة الأتمتة والصيانة الصناعية والتشغيل التجريبي والمشاريع الهندسية.',
   about3:'هدفي هو تصميم أنظمة صناعية موثوقة، وتحسين الكفاءة التشغيلية، ودمج التقنيات الحديثة مثل الأتمتة والذكاء الاصطناعي وتطوير البرمجيات في البيئات الصناعية.',
-  c_mobile:'الهاتف', c_loc:'الموقع', ph_name:'اسمك', ph_email:'بريدك الإلكتروني', ph_msg:'رسالتك',
+  c_mobile:'الهاتف', c_loc:'الموقع', ph_name:'اسمك', ph_email:'بريدك الإلكتروني', ph_msg:'رسالتك', lbl_name:'اسمك', lbl_email:'بريدك الإلكتروني', lbl_message:'رسالتك', 'a11y.skipToContent':'تخط إلى المحتوى',
   btn_send:'إرسال ⚡', footer:'© 2026 حمو عبد القادر — كهرباء • أجهزة قياس • أتمتة',
-  typing:['مسؤول الهندسة الكهربائية','متخصص PLC و SCADA (Siemens TIA Portal)','مهندس أجهزة قياس وتشغيل تجريبي','قائد الصيانة الصناعية','بايثون وهندسة مدعومة بالذكاء الاصطناعي'] }
+  typing:['مسؤول الهندسة الكهربائية','متخصص PLC و SCADA (Siemens TIA Portal)','مهندس أجهزة قياس وتشغيل تجريبي','قائد الصيانة الصناعية','بايثون وهندسة مدعومة بالذكاء الاصطناعي'],
+  "exp1.title":"مسؤول الكهرباء وأجهزة القياس والأتمتة — KAPACHIM S.A.","exp1.desc":"إدارة الهندسة الكهربائية، والإشراف على الصيانة الصناعية، والتشغيل الكهربائي وأجهزة القياس، وأنظمة التحكم المستندة إلى PLC، وتخطيط الصيانة الوقائية، وإشراف الفريق، والشراء، والإعداد التقني الفني، وحل المشكلات، والامتثال للسلامة الكهربائية.","exp2.title":"فني كهرباء — KAPACHIM S.A.","exp2.desc":"التثبيت الكهربائي الصناعي، وتوجيه الكابلات، وتوزيع الطاقة، وتثبيت المحركات، وصيانة MCC، وإصلاح الأعطال، وتثبيت الأدوات، والصيانة الوقائية.","exp3.title":"عمل حر — هندسة كهربائية واستشارات","exp3.desc":"مشاريع هندسة كهربائية واستشارات فنية.","exp4.title":"مدير تسويق — وكالة سفر","exp4.desc":"إدارة التسويق الرقمي وعمليات العملاء.","exp5.title":"تدريب طالب — Sonatrach (GP2Z، أرزوي)","exp5.desc":"تم إكمال تدريب في المجمع GP2Z، أرزوي.","skill1":"⚡ الهندسة الكهربائية","skill2":"🤖 أتمتة (PLC / SCADA / HMI)","skill3":"🎛️ أجهزة القياس والمعايرة","skill4":"🔧 الصيانة الصناعية وتحليل سبب الجذر","skill5":"🐍 بايثون وبرمجيات صناعية","skill6":"📋 إدارة المشروع","chip.st.1":"ETAP","chip.st.2":"Caneco BT","chip.st.3":"AutoCAD","chip.st.4":"AutoCAD Plant 3D","chip.st.5":"EPLAN P8","chip.st.6":"Dialux Evo","chip.st.7":"Siemens TIA Portal","chip.st.8":"WinCC Unified","chip.st.9":"WinCC Flexible","chip.st.10":"Python","chip.st.11":"Docker","chip.st.12":"PostgreSQL","chip.st.13":"MinIO","chip.std.1":"IEC 60364","chip.std.2":"IEC 60204","chip.std.3":"IEC 60947","chip.std.4":"IEC 61508","chip.std.5":"NF C 15-100","chip.std.6":"IEEE 519","chip.cert.1":"PCS7 Graphics — WinCC","chip.cert.2":"PLC Programming L3","chip.cert.3":"PLC Programming L4","chip.cert.4":"PLC & DCS","proj1.title":"مشروع إنتاج SLES","proj1.desc":"الإشراف الكهربائي، وإدارة التثبيت، وتوجيه الكابلات، والاختبار، والتشغيل، والتوثيق.","proj2.title":"ترقية طاقة الأتمتة","proj2.desc":"ترقية نظام الطاقة لبنية تحتية للأتمتة مع التنسيق الفني والتشغيل.","proj3.title":"TGBT LABSA","proj3.desc":"مشروع لوحة التبديل الرئيسية منخفضة الجهد: مراجعات الهندسة، والتركيب، والاختبار.","proj4.title":"دمج المولدات ومصدر الطاقة غير المنقطع","proj4.desc":"دمج المولدات الاحتياطية وأنظمة الطاقة غير المنقطعة في البنية التحتية الكهربائية الصناعية.","proj5.title":"تشغيل الأجهزة","proj5.desc":"تشغيل أجهزة قياس التدفق، وناقلات المستوى، وأجهزة قياس الضغط مع المعايرة.","proj6.title":"نظام حضور متعدد البيومترات","proj6.desc":"منصة بايثون لمزامنة أجهزة متعددة البيومترات: مزامنة تلقائية، قاعدة بيانات محلية، واجهة ويب فلاسك.","proj7.title":"مساعد هندسة الذكاء الاصطناعي","proj7.desc":"مساعدون يعملون بالذكاء الاصطناعي للتوثيق التقني، وتخطيط الصيانة، والحسابات، وإصلاح الأعطال.","proj8.title":"سير عمل الأتمتة الصناعية","proj8.desc":"سير عمل الأتمتة التي تحسن الصيانة الصناعية والتوثيق الهندسي.","edu1":"🎓 ماجستير — هندسة كهربائية وإلكترونية، جامعة العلوم والتكنولوجيا محمد بوضياف (2017–2019)","edu2":"🎓 بكالوريوس — هندسة كهربائية وإلكترونية، جامعة العلوم والتكنولوجيا محمد بوضياف (2014–2017)","edu3":"🗣️ العربية • الفرنسية • الإنجليزية","c_email":"البريد الإلكتروني","c_linkedin":"LinkedIn","a11y.switchTheme":"يغير سمات اللون",'exp1.when':'01/2025 – إلى الآن','exp2.when':'10/2021 – 03/2025','exp3.when':'02/2021 – 09/2021','exp4.when':'12/2019 – 01/2021','exp5.when':'03/2019','chip.sub.st':'البرمجيات والأدوات','chip.sub.std':'المعايير','chip.sub.cert':'الشهادات'
+ }
 };
 const langs = ['en','fr','ar'];
 let li = Math.max(0, langs.indexOf(localStorage.getItem('lang')));
@@ -315,34 +363,46 @@ function applyLang(){
   document.querySelectorAll('[data-ph]').forEach(el => { if (d[el.dataset.ph]) el.placeholder = d[el.dataset.ph]; });
   localStorage.setItem('lang', L);
   phrases = d.typing; pi = 0; ci = 0; del = false;
+  if (REDUCE_MOTION.matches) typed.textContent = phrases[pi];
 }
 
 /* ============ THEME SWITCHER ============ */
-const themes = ['minimal','luxury','tech3d','hmi','gradient'];
-const tnames = {minimal:'⟳ MINIMAL', luxury:'⟳ DARK LUXURY', tech3d:'⟳ 3D SCENE', hmi:'⟳ SCADA / HMI', gradient:'⟳ GRADIENT GLASS'};
+const themes = ['minimal','luxury','tech3d','hmi'];
+const tnames = {minimal:'⟳ MINIMAL', luxury:'⟳ DARK LUXURY', tech3d:'⟳ 3D SCENE', hmi:'⟳ SCADA / HMI'};
 let ti = Math.max(0, themes.indexOf(localStorage.getItem('theme')));
 document.getElementById('themeBtn').addEventListener('click', () => { ti = (ti+1)%themes.length; applyTheme(true); });
-function applyTheme(showToast){
+function showToast(msg){
+  const toast = document.getElementById('toast');
+  toast.textContent = msg; toast.classList.add('on'); clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('on'), 2000);
+}
+function applyTheme(withToast){
   const t = themes[ti];
   document.body.dataset.theme = t;
   document.getElementById('themeName').textContent = tnames[t];
   localStorage.setItem('theme', t);
   if (t === 'tech3d') initThree();
-  if (showToast){
-    const toast = document.getElementById('toast');
-    toast.textContent = '🎨 ' + tnames[t].replace('⟳ ','');
-    toast.classList.add('on'); clearTimeout(toast._t);
-    toast._t = setTimeout(() => toast.classList.remove('on'), 2000);
-  }
+  syncLoops();                           // theme switch re-arms the 2D loop: in for luxury/hmi, out otherwise
+  if (withToast) showToast('🎨 ' + tnames[t].replace('⟳ ',''));
 }
 
 /* ============ 2D FX ============ */
 const fx = document.getElementById('fx'), c2 = fx.getContext('2d');
-let W, H; function rs(){ W = fx.width = innerWidth; H = fx.height = innerHeight; }
+// ponytail: dpr is capped at 2 -- uncapped dpr on a 4x display blows the canvas area limit and the GPU.
+const dpr = Math.min(devicePixelRatio || 1, 2);
+let W, H;
+function rs(){
+  W = innerWidth; H = innerHeight;                                // W/H stay in CSS px: dust + scanline math use them
+  fx.width = Math.round(W*dpr); fx.height = Math.round(H*dpr);     // BACKING STORE ONLY; CSS keeps #fx{position:fixed;inset:0}
+  c2.setTransform(dpr,0,0,dpr,0,0);                               // MUST re-apply: assigning .width resets the transform to identity
+}
 addEventListener('resize', rs); rs();
 const dust = Array.from({length:60}, () => ({x:Math.random()*W, y:Math.random()*H, s:Math.random()*2+.5, v:Math.random()*.4+.1}));
 let scan = 0;
-(function loop(){
+let fxRAF = 0;
+function fxFrame(){
+  fxRAF = 0;
+  if (REDUCE_MOTION.matches) return;          // idle: no draw, and deliberately no reschedule
   c2.clearRect(0,0,W,H);
   const t = document.body.dataset.theme;
   if (t === 'luxury'){
@@ -357,50 +417,96 @@ let scan = 0;
     g.addColorStop(0,'rgba(51,255,102,0)'); g.addColorStop(1,'rgba(51,255,102,.12)');
     c2.fillStyle = g; c2.fillRect(0,scan-60,W,60);
   }
-  requestAnimationFrame(loop);
-})();
+  fxRAF = requestAnimationFrame(fxFrame);
+}
+function fxStart(){ if (fxRAF || REDUCE_MOTION.matches) return; fxRAF = requestAnimationFrame(fxFrame); }
+function fxStop(){ if (fxRAF) cancelAnimationFrame(fxRAF); fxRAF = 0; }
+
+/* Both loops are IIFEs that reschedule unconditionally, so these two conditions are their only off-switches:
+   page visibility, and the theme (the #fx loop draws nothing in 3 of the 5 themes -- tech3d even hides the
+   canvas). ONE syncLoops() serves the visibilitychange listener AND the reduced-motion listener, so the two
+   can never disagree about whether a loop is armed. syncLoops() is not called here: animStart() reads
+   `threeReady`, which is not initialised until the THREE.JS section. applyTheme() arms it at boot. */
+const FX_DRAW_THEMES = ['luxury','hmi'];
+function syncLoops(){
+  const t = document.body.dataset.theme;
+  fxStop(); animStop();                 // deterministic: clear both, then re-arm only what must run
+  if (document.hidden || REDUCE_MOTION.matches) return;
+  if (FX_DRAW_THEMES.includes(t)) fxStart();
+  if (t === 'tech3d') animStart();
+}
+document.addEventListener('visibilitychange', () => syncLoops());
 
 /* ============ THREE.JS ============ */
-let threeReady=false, renderer, scene, camera, knot, ico, mx=0, my=0;
+let threeReady=false, renderer, scene, camera, knot, ico, mx=0, my=0, animRAF = 0;
+function animFrame(){
+  animRAF = 0;
+  if (REDUCE_MOTION.matches || !threeReady) return;
+  knot.rotation.x += .004; knot.rotation.y += .006; ico.rotation.y -= .002;
+  camera.position.x += (mx*2 - camera.position.x)*.05;
+  camera.position.y += (-my*2 - camera.position.y)*.05;
+  camera.lookAt(0,0,0); renderer.render(scene, camera);
+  animRAF = requestAnimationFrame(animFrame);
+}
+function animStart(){ if (animRAF || REDUCE_MOTION.matches || !threeReady) return; animRAF = requestAnimationFrame(animFrame); }
+function animStop(){ if (animRAF) cancelAnimationFrame(animRAF); animRAF = 0; }
 function initThree(){
-  if (threeReady || typeof THREE === 'undefined') return;
+  if (threeReady) return;
+  if (typeof THREE === 'undefined'){
+    console.warn('[nn] THREE is undefined - three.js still loading or the CDN failed; retrying on DOMContentLoaded');
+    return;                              // LOUD on purpose: a silent no-op would hide a dead 3D theme
+  }
   threeReady = true;
   renderer = new THREE.WebGLRenderer({canvas:document.getElementById('three'), alpha:true, antialias:true});
+  renderer.setPixelRatio(dpr);           // match the 2D canvas; setSize() then scales the backing store
   renderer.setSize(innerWidth, innerHeight);
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 100);
   camera.position.z = 6;
-  knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.6,.45,140,20), new THREE.MeshBasicMaterial({color:0x7c3aed, wireframe:true, transparent:true, opacity:.55}));
+  knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.6,.45,140,20), new THREE.MeshBasicMaterial({color:0x0a84ff, wireframe:true, transparent:true, opacity:.55}));
   ico = new THREE.Mesh(new THREE.IcosahedronGeometry(3.2,1), new THREE.MeshBasicMaterial({color:0x22d3ee, wireframe:true, transparent:true, opacity:.18}));
   scene.add(knot, ico);
   addEventListener('mousemove', e => { mx = e.clientX/innerWidth-.5; my = e.clientY/innerHeight-.5; });
   addEventListener('resize', () => { renderer.setSize(innerWidth,innerHeight); camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); });
-  (function anim(){
-    knot.rotation.x += .004; knot.rotation.y += .006; ico.rotation.y -= .002;
-    camera.position.x += (mx*2 - camera.position.x)*.05;
-    camera.position.y += (-my*2 - camera.position.y)*.05;
-    camera.lookAt(0,0,0); renderer.render(scene, camera); requestAnimationFrame(anim);
-  })();
+  animStart();
 }
+
+/* three.js is deferred, so THREE only exists AFTER this inline script ran -- yet applyTheme() above may
+   already have been asked for tech3d from localStorage. Retry once the deferred script has executed
+   (deferred scripts always run before DOMContentLoaded). */
+document.addEventListener('DOMContentLoaded', () => { if (themes[ti] === 'tech3d') initThree(); });
 
 /* ============ TYPING ============ */
 let phrases = I18N.en.typing, pi=0, ci=0, del=false;
 const typed = document.getElementById('typed');
-(function type(){
+let typeT = 0;
+function type(){
+  typeT = 0;
   const p = phrases[pi];
+  if (REDUCE_MOTION.matches){ typed.textContent = p; return; }  // full phrase at once, never blank
   typed.textContent = p.slice(0, ci);
   if (!del && ci < p.length) ci++;
   else if (del && ci > 0) ci--;
-  else { if(!del){ del=true; return setTimeout(type,1500); } del=false; pi=(pi+1)%phrases.length; }
-  setTimeout(type, del?35:80);
-})();
+  else { if(!del){ del=true; typeT = setTimeout(type,1500); return; } del=false; pi=(pi+1)%phrases.length; }
+  typeT = setTimeout(type, del?35:80);
+}
+function typeStart(){ if (typeT) return; typeT = setTimeout(type, REDUCE_MOTION.matches ? 0 : (del?35:80)); }
+type();
+
+/* a preference flip must revive the loops, so drive them from the media query, not the IIFEs.
+   The loops themselves are re-armed through syncLoops(), the same entry point visibilitychange uses,
+   so a hidden page stays idle and a reduced-motion page stays idle no matter which listener fired. */
+REDUCE_MOTION.addEventListener('change', e => {
+  if (e.matches){ syncLoops(); clearTimeout(typeT); typeT = 0; typed.textContent = phrases[pi]; }
+  else { syncLoops(); typeStart(); }
+});
 
 /* ============ REVEAL + TILT ============ */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting){ e.target.classList.add('show');
-    e.target.querySelectorAll('.bar div').forEach(b => b.style.width = b.dataset.w); }
-}), {threshold:.15});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const reveal = el => { el.classList.add('show');
+  el.querySelectorAll('.bar div').forEach(b => b.style.width = b.dataset.w); };
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) reveal(e.target); }), {threshold:.15}) : null;
+document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : reveal(el));
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
@@ -410,6 +516,16 @@ document.querySelectorAll('.card').forEach(card => {
 });
 
 applyTheme(); applyLang();
+
+const contactForm = document.querySelector('form');
+contactForm.addEventListener('submit', e => {
+  if (!contactForm.action.includes('REPLACE_WITH_FORM_ID')) return;
+  e.preventDefault();
+  const fd = new FormData(contactForm), name = fd.get('name'), email = fd.get('email');
+  showToast('📧 Your mail app is opening…');
+  location.href = 'mailto:aek@hammou.net?subject=' + encodeURIComponent('Portfolio message from ' + name)
+    + '&body=' + encodeURIComponent(fd.get('message') + '\n\nFrom: ' + name + ' <' + email + '>');
+});
 </script>
 </body>
 </html>
